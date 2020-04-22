@@ -31,7 +31,7 @@ $(document).ready(function() {
           var context = {
             titolo: titolo,
             titoloOriginale: titoloOriginale,
-            lingua: lingua,
+            lingua: bandieraLingua(lingua),
             voto: voto,
           };
           // stampo il div di hanldebars in main
@@ -43,8 +43,9 @@ $(document).ready(function() {
         alert("error")
       }
     });
-
-    $.ajax({ // parte chiamata ajax per le serie tv
+    
+    // parte chiamata ajax per le serie tv
+    $.ajax({
       url: "https://api.themoviedb.org/3/search/tv", // url di riferimento
       method: "GET", // metodo usato per prendere qualcosa
       data: {
@@ -66,9 +67,9 @@ $(document).ready(function() {
           var context = {
             titolo: titolo,
             titoloOriginale: titoloOriginale,
-            lingua: lingua,
+            lingua: bandieraLingua(lingua),
             tipo: "Serie TV",
-            voto: voto,
+            voto: '<i class="far fa-star"></i>'
           };
           // stampo il div di hanldebars in main
           var html = template(context);
@@ -80,4 +81,28 @@ $(document).ready(function() {
       }
     });
   });
+
+  // funzioni
+
+  function bandieraLingua(lingua){
+    if(lingua == "en"){
+      lingua = '<img src="img/gb.png">';
+    }else if(lingua == "it"){
+      lingua = '<img src="img/it.png">';
+    }else if(lingua == "es"){
+      lingua = '<img src="img/es.png">';
+    }else if(lingua == "de"){
+      lingua = '<img src="img/de.png">';
+    }else if(lingua == "pt"){
+      lingua = '<img src="img/pt.png">';
+    }else if(lingua == "cn"){
+      lingua = '<img src="img/cn.png">';
+    }else if(lingua == "jp"){
+      lingua = '<img src="img/jp.png">';
+    }else {
+      lingua = "X";
+    }
+    return lingua;
+  }
+
 });
