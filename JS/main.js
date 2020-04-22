@@ -22,17 +22,24 @@ $(document).ready(function() {
         var listaFilm = data.results; // uso data per attingere a results e lo metto nella variabile listaFilm
         // ciclo tutti i contenuti di listaFilm e ne prendo i parametri che mi interessano
         for (var i = 0; i < listaFilm.length; i++) {
+          var voto = Math.floor(voto = listaFilm[i].vote_average / 2); //divido il voto per 2
+          var stelle = "";
+          for (var sp = 0; sp < voto; sp++) { //SP = StellePiene
+            stelle += '<i class="fas fa-star"></i>'
+          };
+          for (var sv = 0; sv < 5-voto; sv++) { //SV = StelleVuote
+            stelle += '<i class="far fa-star"></i>'
+          };
           // prendo un elemento dal film ciclato in listaFilm (data.results)
           var titolo = listaFilm[i].title;
           var titoloOriginale = listaFilm[i].original_title;
           var lingua = listaFilm[i].original_language;
-          var voto = listaFilm[i].vote_average;
           // imposto i contenuti delle variabili prese nel ciclo dentro il div di handlebars
           var context = {
             titolo: titolo,
             titoloOriginale: titoloOriginale,
             lingua: bandieraLingua(lingua),
-            voto: voto,
+            voto: stelle,
           };
           // stampo il div di hanldebars in main
           var html = template(context);
@@ -43,7 +50,7 @@ $(document).ready(function() {
         alert("error")
       }
     });
-    
+
     // parte chiamata ajax per le serie tv
     $.ajax({
       url: "https://api.themoviedb.org/3/search/tv", // url di riferimento
@@ -58,6 +65,14 @@ $(document).ready(function() {
         var listaFilm = data.results; // uso data per attingere a results e lo metto nella variabile listaFilm
         // ciclo tutti i contenuti di listaFilm e ne prendo i parametri che mi interessano
         for (var i = 0; i < listaFilm.length; i++) {
+          var voto = Math.floor(voto = listaFilm[i].vote_average / 2); //divido il voto per 2
+          var stelle = "";
+          for (var sp = 0; sp < voto; sp++) { //SP = StellePiene
+            stelle += '<i class="fas fa-star"></i>'
+          };
+          for (var sv = 0; sv < 5-voto; sv++) { //SV = StelleVuote
+            stelle += '<i class="far fa-star"></i>'
+          };
           // prendo un elemento dal film ciclato in listaFilm (data.results)
           var titolo = listaFilm[i].name;
           var titoloOriginale = listaFilm[i].original_name;
@@ -69,7 +84,7 @@ $(document).ready(function() {
             titoloOriginale: titoloOriginale,
             lingua: bandieraLingua(lingua),
             tipo: "Serie TV",
-            voto: '<i class="far fa-star"></i>'
+            voto: stelle
           };
           // stampo il div di hanldebars in main
           var html = template(context);
