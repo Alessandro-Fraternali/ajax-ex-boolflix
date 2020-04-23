@@ -12,7 +12,7 @@
   </head>
   <body>
   <nav>
-    <input type="text" name="" value="" id="cercatrice"> <button type="button" name="button" id="cercatore">Cerca</button>
+    <input type="text" name="" value="scrubs" id="cercatrice"> <button type="button" name="button" id="cercatore">Cerca</button>
   </nav>
   <main>
 
@@ -20,6 +20,7 @@
   <script id="entry-template" type="text/x-handlebars-template">
     <div class="pory">
       <h3>{{titolo}}</h3>
+      <div>{{{locandina}}}</div>
       <i><p>Titolo originale: {{titoloOriginale}}</p></i>
       <p>Lingua originale: {{{lingua}}}</p>
       <u><p>{{tipo}}</p></u>

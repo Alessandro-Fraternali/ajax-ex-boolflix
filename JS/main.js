@@ -32,11 +32,13 @@ $(document).ready(function() {
           };
           // prendo un elemento dal film ciclato in listaFilm (data.results)
           var titolo = listaFilm[i].title;
+          var locandina = listaFilm[i].poster_path;
           var titoloOriginale = listaFilm[i].original_title;
           var lingua = listaFilm[i].original_language;
           // imposto i contenuti delle variabili prese nel ciclo dentro il div di handlebars
           var context = {
             titolo: titolo,
+            locandina: locandinaggio(locandina),
             titoloOriginale: titoloOriginale,
             lingua: bandieraLingua(lingua),
             voto: stelle,
@@ -75,12 +77,14 @@ $(document).ready(function() {
           };
           // prendo un elemento dal film ciclato in listaFilm (data.results)
           var titolo = listaFilm[i].name;
+          var locandina = listaFilm[i].poster_path;
           var titoloOriginale = listaFilm[i].original_name;
           var lingua = listaFilm[i].original_language;
           var voto = listaFilm[i].vote_average;
           // imposto i contenuti delle variabili prese nel ciclo dentro il div di handlebars
           var context = {
             titolo: titolo,
+            locandina: locandinaggio(locandina),
             titoloOriginale: titoloOriginale,
             lingua: bandieraLingua(lingua),
             tipo: "Serie TV",
@@ -99,6 +103,7 @@ $(document).ready(function() {
 
   // funzioni
 
+  // funzione per impostare la bandiera della lingua
   function bandieraLingua(lingua){
     if(lingua == "en"){
       lingua = '<img src="img/gb.png">';
@@ -115,9 +120,15 @@ $(document).ready(function() {
     }else if(lingua == "jp"){
       lingua = '<img src="img/jp.png">';
     }else {
-      lingua = "X";
+      lingua = "ostrogoto antico";
     }
     return lingua;
+  }
+
+  // funzione per impostare la locandina
+  function locandinaggio(locandina){
+    var locandina = '<img src="https://image.tmdb.org/t/p/w200/'+locandina+'">'
+    return locandina;
   }
 
 });
