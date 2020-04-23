@@ -128,6 +128,9 @@ $(document).ready(function() {
   // funzione per impostare la locandina
   function locandinaggio(locandina){
     var locandina = '<img src="https://image.tmdb.org/t/p/w200/'+locandina+'">'
+    if (locandina.includes("null")) {
+      locandina = '<img src="img/fail.png">';
+    }
     return locandina;
   }
 
