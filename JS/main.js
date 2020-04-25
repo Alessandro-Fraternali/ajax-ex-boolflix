@@ -1,11 +1,30 @@
 $(document).ready(function() {
 
-  // inizializzazione template di handlebars
+  // Variabili globali
+  // Inizializzazione template di handlebars
   var source = $("#entry-template").html();
   var template = Handlebars.compile(source);
 
-  // al click del bottone #cercatore parte una chiamata Ajax
-  $("#cercatore").click( function(){
+  // Se premo ENTER mentre sono nella barra di ricerca
+  // partono le funzioni chiamaFilm e chiamaSerie
+  $('#cercatrice').keypress(function (e) {
+    var key = e.which;
+    if(key == 13){
+      chiamaFilm();
+      chiamaSerie()
+    }
+  })
+
+  // al click del bottone #cercatore partono le funzioni chiamaFilm e chiamaSerie
+  $("#cercatore").click( function (){
+    chiamaFilm();
+    chiamaSerie();
+  });
+
+  // ELENCO FUNZIONI
+
+  // Cerca film
+  function chiamaFilm(){
     // resetto la pagina in modo che ospiti solo gli elementi cercati
     $("main").html(" ");
     var cercato = $("#cercatrice").val(); //prendo il valore inserito dall'utente nell'input #cercatrice
@@ -43,7 +62,7 @@ $(document).ready(function() {
             titoloOriginale: titoloOriginale,
             lingua: bandieraLingua(lingua),
             voto: stelle,
-            trama: trama
+            trama: trama.substring(0, 120) + '[...]'
           };
           // stampo il div di hanldebars in main
           var html = template(context);
@@ -54,8 +73,13 @@ $(document).ready(function() {
         alert("error")
       }
     });
+  }
 
-    // parte chiamata ajax per le serie tv
+  // Cerca serie tv
+  function chiamaSerie(){
+    // resetto la pagina in modo che ospiti solo gli elementi cercati
+    $("main").html(" ");
+    var cercato = $("#cercatrice").val(); //prendo il valore inserito dall'utente nell'input #cercatrice
     $.ajax({
       url: "https://api.themoviedb.org/3/search/tv", // url di riferimento
       method: "GET", // metodo usato per prendere qualcosa
@@ -92,7 +116,7 @@ $(document).ready(function() {
             lingua: bandieraLingua(lingua),
             tipo: "Serie TV",
             voto: stelle,
-            trama: trama
+            trama: trama.substring(0, 250) + '[...]'
           };
           // stampo il div di hanldebars in main
           var html = template(context);
@@ -103,14 +127,12 @@ $(document).ready(function() {
         alert("error")
       }
     });
-  });
-
-  // FUNZIONI
+  }
 
   // Al passaggio del mouse, le informazioni del film coprono la locandina
   $('main').on("mouseover", ".pory",
      function () {
-      $(this).find(".infofilm").fadeIn(700);
+      $(this).find(".infofilm").fadeIn(400);
   });
   // Quando il mouse lascia la locandina, le informazioni spariscono
   $('main').on("mouseleave", ".pory",
