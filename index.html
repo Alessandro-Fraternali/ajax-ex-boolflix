@@ -12,19 +12,28 @@
   </head>
   <body>
   <nav>
-    <input type="text" name="" value="scrubs" id="cercatrice"> <button type="button" name="button" id="cercatore">Cerca</button>
+    <h1>NETFLIX</h1>
+    <div class="ricerca">
+      <input type="text" name="" value="casa" id="cercatrice"> <button type="button" name="button" id="cercatore">CERCA</button>
+    </div>
   </nav>
   <main>
 
   </main>
   <script id="entry-template" type="text/x-handlebars-template">
     <div class="pory">
-      <div>{{{locandina}}}</div>
-      <h3>{{titolo}}</h3>
-      <i><p>Titolo originale: {{titoloOriginale}}</p></i>
-      <p>Lingua originale: {{{lingua}}}</p>
-      <u><p>{{tipo}}</p></u>
-      <h5>Voto: {{{voto}}}</h5>
+      <div class="locandina">{{{locandina}}}</div>
+      <div class="infofilm">
+        <div class="testifilm">
+          <h1>{{titolo}}</h1>
+          <i><p>Titolo originale: {{titoloOriginale}}</p></i>
+          <p>Lingua originale: {{{lingua}}}</p>
+          <u><p>{{tipo}}</p></u>
+          <h5>Voto: {{{voto}}}</h5>
+          <b><p>Trama:</p></b>
+          <p>{{trama}}</p>
+        </div>
+      </div>
     </div>
   </script>
     <!-- jquery -->

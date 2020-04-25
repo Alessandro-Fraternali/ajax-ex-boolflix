@@ -4,8 +4,109 @@
   box-sizing: border-box;
 }
 
+body {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgb(42, 42, 42);
+}
 
+/* blocco con logo e navigazione */
+nav {
+  height: 60px;
+  background-color: black;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
+/* netflix */
+nav h1{
+  color: red;
+  margin-left: 30px;
+  font-size: 40px;
+}
+
+/* contiene barra e bottone di ricerca */
+.ricerca {
+  margin-right: 30px;
+}
+
+/* barra di ricerca */
+#cercatrice {
+  background-color: rgb(70, 70, 70);
+  color: white;
+  width: 180px;
+  height: 30px;
+  padding-left: 10px;
+}
+
+/* bottone di ricerca */
+#cercatore {
+  background-color:  rgb(70, 70, 70);
+  width: 60px;
+  height: 30px;
+  color: white;
+  font-weight: bolder;
+}
+
+/* blocco principale */
+main {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  width: 98%;
+  height: 100%;
+  color: white;
+}
+
+/* stelle per i voti */
 .fa-star {
   color: orange;
+}
+
+/* contiene la locandina e le informazioni a comparsa */
+.pory {
+  height: 350px;
+  width: 255px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 50px;
+}
+
+.locandina img, .infofilm {
+  height: 346px;
+  width: 255px;
+}
+
+.locandina img:hover, .infofilm:hover {
+  cursor: pointer;
+}
+
+/* blocco contenente le info dei film */
+.infofilm {
+  height: 350px;
+  position: absolute;
+  background: rgba(0, 0, 0, 0.92);
+  display: none;
+}
+
+/* gestisce i testi in .infofilm */
+.testifilm {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.testifilm h1 {
+  margin-bottom: 15px;
+}
+
+.testifilm p, .infofilm h5 {
+  margin-bottom: 10px;
 }

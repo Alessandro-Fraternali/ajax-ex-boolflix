@@ -35,6 +35,7 @@ $(document).ready(function() {
           var locandina = listaFilm[i].poster_path;
           var titoloOriginale = listaFilm[i].original_title;
           var lingua = listaFilm[i].original_language;
+          var trama = listaFilm[i].overview
           // imposto i contenuti delle variabili prese nel ciclo dentro il div di handlebars
           var context = {
             titolo: titolo,
@@ -42,6 +43,7 @@ $(document).ready(function() {
             titoloOriginale: titoloOriginale,
             lingua: bandieraLingua(lingua),
             voto: stelle,
+            trama: trama
           };
           // stampo il div di hanldebars in main
           var html = template(context);
@@ -81,6 +83,7 @@ $(document).ready(function() {
           var titoloOriginale = listaFilm[i].original_name;
           var lingua = listaFilm[i].original_language;
           var voto = listaFilm[i].vote_average;
+          var trama = listaFilm[i].overview
           // imposto i contenuti delle variabili prese nel ciclo dentro il div di handlebars
           var context = {
             titolo: titolo,
@@ -88,7 +91,8 @@ $(document).ready(function() {
             titoloOriginale: titoloOriginale,
             lingua: bandieraLingua(lingua),
             tipo: "Serie TV",
-            voto: stelle
+            voto: stelle,
+            trama: trama
           };
           // stampo il div di hanldebars in main
           var html = template(context);
@@ -101,7 +105,18 @@ $(document).ready(function() {
     });
   });
 
-  // funzioni
+  // FUNZIONI
+
+  // Al passaggio del mouse, le informazioni del film coprono la locandina
+  $('main').on("mouseover", ".pory",
+     function () {
+      $(this).find(".infofilm").fadeIn(700);
+  });
+  // Quando il mouse lascia la locandina, le informazioni spariscono
+  $('main').on("mouseleave", ".pory",
+     function () {
+      $(this).find(".infofilm").fadeOut(700);
+  });
 
   // funzione per impostare la bandiera della lingua
   function bandieraLingua(lingua){
@@ -127,11 +142,10 @@ $(document).ready(function() {
 
   // funzione per impostare la locandina
   function locandinaggio(locandina){
-    var locandina = '<img src="https://image.tmdb.org/t/p/w200/'+locandina+'">'
+    var locandina = '<img src="https://image.tmdb.org/t/p/w185/'+locandina+'">'
     if (locandina.includes("null")) {
       locandina = '<img src="img/fail.png">';
     }
     return locandina;
   }
-
 });
