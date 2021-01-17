@@ -27,6 +27,7 @@ nav h1{
   color: red;
   margin-left: 30px;
   font-size: 40px;
+  cursor: pointer;
 }
 
 /* contiene barra e bottone di ricerca */
@@ -41,6 +42,7 @@ nav h1{
   width: 180px;
   height: 30px;
   padding-left: 10px;
+  border: none;
 }
 
 /* bottone di ricerca */
@@ -49,6 +51,7 @@ nav h1{
   width: 60px;
   height: 30px;
   color: white;
+  border: none;
   font-weight: bolder;
 }
 
@@ -58,9 +61,8 @@ main {
   justify-content: space-around;
   align-items: flex-start;
   flex-wrap: wrap;
-  width: 98%;
-  height: 100%;
   color: white;
+  width: 97%
 }
 
 /* stelle per i voti */
@@ -71,17 +73,18 @@ main {
 /* contiene la locandina e le informazioni a comparsa */
 .pory {
   height: 350px;
-  width: 255px;
+  width: 240px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   margin-top: 50px;
+  margin-right: 15px;
 }
 
 .locandina img, .infofilm {
   height: 346px;
-  width: 255px;
+  width: 240px;
 }
 
 .locandina img:hover, .infofilm:hover {
@@ -94,19 +97,19 @@ main {
   position: absolute;
   background: rgba(0, 0, 0, 0.92);
   display: none;
+  padding: 10px;
 }
 
 /* gestisce i testi in .infofilm */
 .testifilm {
   display: flex;
   flex-direction: column;
-  padding: 10px;
 }
 
 .testifilm h1 {
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 
 .testifilm p, .infofilm h5 {
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }

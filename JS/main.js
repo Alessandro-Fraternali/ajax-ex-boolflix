@@ -21,6 +21,10 @@ $(document).ready(function() {
     chiamaSerie();
   });
 
+  $("#logo").click( function(){
+    $("main").html(" ");
+  })
+
   // ELENCO FUNZIONI
 
   // Cerca film
@@ -62,11 +66,11 @@ $(document).ready(function() {
             titoloOriginale: titoloOriginale,
             lingua: bandieraLingua(lingua),
             voto: stelle,
-            trama: trama.substring(0, 120) + '[...]'
+            trama: trama.substring(0, 100) + '[...]'
           };
           // stampo il div di hanldebars in main
           var html = template(context);
-          $("main").append(html);
+          $("main").append(html).hide().fadeIn(1000);
         }
       },
       error: function(){
@@ -91,6 +95,7 @@ $(document).ready(function() {
       // Se la chiamata ha successo:
       success: function(data, stato){
         var listaFilm = data.results; // uso data per attingere a results e lo metto nella variabile listaFilm
+        console.log(data.results);
         // ciclo tutti i contenuti di listaFilm e ne prendo i parametri che mi interessano
         for (var i = 0; i < listaFilm.length; i++) {
           var voto = Math.floor(voto = listaFilm[i].vote_average / 2); //divido il voto per 2
@@ -116,11 +121,11 @@ $(document).ready(function() {
             lingua: bandieraLingua(lingua),
             tipo: "Serie TV",
             voto: stelle,
-            trama: trama.substring(0, 250) + '[...]'
+            trama: trama.substring(0, 100) + '[...]'
           };
           // stampo il div di hanldebars in main
           var html = template(context);
-          $("main").append(html);
+          $("main").append(html).hide().fadeIn(1000);
         }
       },
       error: function(){
